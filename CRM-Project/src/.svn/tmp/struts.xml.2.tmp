@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 全局设置struts2的表单标签样式 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+
+	<package name="crm" namespace="/" extends="struts-default">
+		<action name="user" class="userAction">
+			<result name="index" type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="userlist" >/~right/user/list.jsp</result>
+			<result name="useredit" >/~right/user/edit.jsp</result>
+			<result name="userdetail" >/~right/user/detail.jsp</result>
+			<result name="userDispatch" >/~right/user/dispatch.jsp</result>
+		</action>
+		
+		<action name="service" class="serviceActoin">
+			<result name="userList">/~cust/service/add.jsp</result>
+		</action>
+		
+		<action name="role" class="roleAction">
+			<result name="rolelist">/~right/role/list.jsp </result>
+			<result name="roleEdit">/~right/role/edit.jsp</result>
+			<result name="roleDetail">/~right/role/detail.jsp</result>
+			<result name="roleDispatch">/~right/role/dispatch.jsp</result>
+			<result type="redirectAction">role!roleList</result>
+		</action>
+		
+		<action name="right" class="rightAction">
+			<result name="rightList">/~right/right/list.jsp </result>
+			<result name="rightEdit">/~right/right/edit.jsp </result>
+			<result name="rightDetail">/~right/right/detail.jsp </result>
+		</action>
+		
+		<action name="dict" class="dictAction">
+			<result>/~basd/dict.jsp</result>
+			<result name="del" type="redirectAction">dict!query</result>
+			<result name="toUpdate">/~basd/dict_edit.jsp</result>
+			<result name="Update" type="redirectAction">dict!query</result>
+			<result name="Insert" type="redirectAction">dict!query</result>
+		</action>
+		<action name="pro" class="productAction">
+			<result>/~basd/product.jsp</result>
+		</action>
+		<action name="sto" class="storageAction">
+			<result>/~basd/storage.jsp</result>
+		</action>
+		<action name="ord" class="orderAction">
+			<result>/~rept/contr.jsp</result>
+		</action>
+		<action name="cst" class="cstCustomerAction">
+			<result>/~rept/cons.jsp</result>
+		</action>
+		<action name="cs" class="cstServiceAction">
+			<result>/~rept/ser.jsp</result>
+		</action>
+		<action name="cl" class="cstLostAction">
+			<result>/~rept/lost.jsp</result>
+		</action>
+	</package>
+</struts>    

@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn2/crmsys/!svn/ver/13/CRM-Project/src/entity
+END
+CstCustomer.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/CstCustomer.hbm.xml
+END
+SysRight.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/SysRight.hbm.xml
+END
+SysRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn2/crmsys/!svn/ver/19/CRM-Project/src/entity/SysRole.java
+END
+SysUser.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/SysUser.hbm.xml
+END
+CstLinkman.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/CstLinkman.java
+END
+Product.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/Product.hbm.xml
+END
+Storage.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn2/crmsys/!svn/ver/9/CRM-Project/src/entity/Storage.java
+END
+SalChance.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/SalChance.hbm.xml
+END
+CstActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/CstActivity.java
+END
+OrdersLine.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/OrdersLine.java
+END
+BasDict.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn2/crmsys/!svn/ver/8/CRM-Project/src/entity/BasDict.java
+END
+CstService.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/crmsys/!svn/ver/19/CRM-Project/src/entity/CstService.java
+END
+CstCustomer.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/CstCustomer.java
+END
+SysRight.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn2/crmsys/!svn/ver/18/CRM-Project/src/entity/SysRight.java
+END
+SysUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn2/crmsys/!svn/ver/19/CRM-Project/src/entity/SysUser.java
+END
+SalPlan.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/SalPlan.hbm.xml
+END
+CstLost.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/CstLost.hbm.xml
+END
+Product.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/Product.java
+END
+SalChance.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/SalChance.java
+END
+Orders.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/Orders.hbm.xml
+END
+SysRole.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/SysRole.hbm.xml
+END
+CstLinkman.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/CstLinkman.hbm.xml
+END
+Storage.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/9/CRM-Project/src/entity/Storage.hbm.xml
+END
+OrdersLine.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/OrdersLine.hbm.xml
+END
+CstActivity.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/CstActivity.hbm.xml
+END
+SalPlan.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn2/crmsys/!svn/ver/21/CRM-Project/src/entity/SalPlan.java
+END
+CstLost.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/CstLost.java
+END
+BasDict.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn2/crmsys/!svn/ver/8/CRM-Project/src/entity/BasDict.hbm.xml
+END
+Orders.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn2/crmsys/!svn/ver/22/CRM-Project/src/entity/Orders.java
+END
+CstService.hbm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn2/crmsys/!svn/ver/2/CRM-Project/src/entity/CstService.hbm.xml
+END

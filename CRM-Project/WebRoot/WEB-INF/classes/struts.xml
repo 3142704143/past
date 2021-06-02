@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 全局设置struts2的表单标签样式 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+
+	<package name="crm" namespace="/" extends="struts-default">
+		<action name="user" class="userAction">
+			<result name="index" type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="userlist" >/~right/user/list.jsp</result>
+			<result name="useredit" >/~right/user/edit.jsp</result>
+			<result name="userdetail" >/~right/user/detail.jsp</result>
+			<result name="userDispatch" >/~right/user/dispatch.jsp</result>
+		</action>
+		
+		<action name="sp" class="salPlanAction">
+			
+		</action>
+		
+		<action name="role" class="roleAction">
+			<result name="rolelist">/~right/role/list.jsp </result>
+			<result name="roleEdit">/~right/role/edit.jsp</result>
+			<result name="roleDetail">/~right/role/detail.jsp</result>
+			<result name="roleDispatch">/~right/role/dispatch.jsp</result>
+			<result type="redirectAction">role!roleList</result>
+		</action>
+		
+		<action name="right" class="rightAction">
+			<result name="rightList">/~right/right/list.jsp </result>
+			<result name="rightEdit">/~right/right/edit.jsp </result>
+			<result name="rightDetail">/~right/right/detail.jsp </result>
+			<result type="redirectAction">right!rightList</result>
+		</action>
+		
+		<action name="dict" class="dictAction">
+			<result>/~basd/dict.jsp</result>
+			<result name="toUpdate">/~basd/dict_edit.jsp</result>
+			<result name="dictList" type="redirectAction">dict!dictList</result>
+		</action>
+		
+		<action name="pro" class="productAction">
+			<result>/~basd/product.jsp</result>
+		</action>
+		
+		<action name="sto" class="storageAction">
+			<result>/~basd/storage.jsp</result>
+		</action>
+		<action name="ord" class="orderAction">
+			<result>/~rept/contr.jsp</result>
+		</action>
+		
+		<action name="cust" class="cstCustomerAction">
+			<result>/~rept/cons.jsp</result>
+			<result name="stList">/~cust/cust/list.jsp</result>
+			<result name="edit">/~cust/cust/edit.jsp</result>
+			<result name="linkman">/~cust/cust/linkman.jsp</result>
+			<result name="orders">/~cust/cust/orders.jsp</result>
+			<result name="activities">/~cust/cust/activities.jsp</result>
+			<result name="linkmanEdit">/~cust/cust/linkman_edit.jsp</result>
+			<result name="activitiesEdit">/~cust/cust/activities_edit.jsp</result>
+			<result name="ordersDetail">/~cust/cust/orders_detail.jsp</result>
+		</action>
+		
+		<action name="cs" class="cstServiceAction">
+			<result>/~rept/ser.jsp</result>
+			<result name="add">/~cust/service/add.jsp</result>
+			<result name="dispatch">/~cust/service/dispatch.jsp</result>
+			<result name="deal">/~cust/service/deal.jsp</result>
+			<result name="arch">/~cust/service/arch.jsp</result>
+			<result name="dealDetail">/~cust/service/deal_detail.jsp</result>
+			<result name="feedback">/~cust/service/feedback.jsp</result>
+			<result name="feedback_detail">/~cust/service/feedback_detail.jsp</result>
+			<result name="detail">/~cust/service/detail.jsp</result>
+		</action>
+		
+		<action name="cst" class="cstLostAction">
+			<result>/~rept/lost.jsp</result>
+			<result name="list">/~cust/lost/list.jsp</result>
+			<result name="confirm">/~cust/lost/confirm.jsp</result>
+			<result name="relay">/~cust/lost/relay.jsp</result>
+		</action>
+		
+		<action name="sc" class="salChangeAction">
+			<result name="scList">/~sale/list.jsp</result>
+			<result name="add">/~sale/add.jsp</result>
+			<result name="edit">/~sale/edit.jsp</result>
+			<result name="dispatch">/~sale/dispatch.jsp</result>
+			<result type="redirectAction">sc!scList</result>
+			
+			<result name="devPlan">/~sale/dev_plan.jsp</result>
+			<result name="devExecute">/~sale/dev_execute.jsp</result>
+			<result name="devDetail">/~sale/dev_detail.jsp</result>
+			<result name="spList">/~sale/dev.jsp</result>
+		</action>
+	</package>
+</struts>    

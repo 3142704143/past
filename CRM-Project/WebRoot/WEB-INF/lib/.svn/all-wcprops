@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn2/crmsys/!svn/ver/2/CRM-Project/WebRoot/WEB-INF/lib
+END
+mysql-connector-java-5.0.8-bin.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn2/crmsys/!svn/ver/2/CRM-Project/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar
+END
+fastjson-1.2.33.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn2/crmsys/!svn/ver/17/CRM-Project/WebRoot/WEB-INF/lib/fastjson-1.2.33.jar
+END
+quartz-all-1.6.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn2/crmsys/!svn/ver/2/CRM-Project/WebRoot/WEB-INF/lib/quartz-all-1.6.0.jar
+END
+spring-context-support.jar
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn2/crmsys/!svn/ver/2/CRM-Project/WebRoot/WEB-INF/lib/spring-context-support.jar
+END
+struts2-spring-plugin-2.0.14.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn2/crmsys/!svn/ver/2/CRM-Project/WebRoot/WEB-INF/lib/struts2-spring-plugin-2.0.14.jar
+END
