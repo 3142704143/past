@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mox.mapper.attends.AoaAttendsListMapper">
+  <resultMap id="BaseResultMap" type="com.mox.entity.attends.AoaAttendsList">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="attends_id" jdbcType="BIGINT" property="attendsId" />
+    <result column="attends_ip" jdbcType="VARCHAR" property="attendsIp" />
+    <result column="attends_remark" jdbcType="VARCHAR" property="attendsRemark" />
+    <result column="attends_time" jdbcType="TIMESTAMP" property="attendsTime" />
+    <result column="status_id" jdbcType="BIGINT" property="statusId" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="attends_user_id" jdbcType="BIGINT" property="attendsUserId" />
+    <result column="attend_hmtime" jdbcType="VARCHAR" property="attendHmtime" />
+    <result column="week_ofday" jdbcType="VARCHAR" property="weekOfday" />
+    <result column="holiday_days" jdbcType="DOUBLE" property="holidayDays" />
+    <result column="holiday_start" jdbcType="DATE" property="holidayStart" />
+  </resultMap>
+	
+
+  <resultMap id="myResultMap" extends="BaseResultMap" type="com.mox.entity.attends.AoaAttendsList">
+  	<result  column="user_name" jdbcType="VARCHAR" property="username" />
+  </resultMap>	
+  
+  <resultMap type="com.mox.entity.attends.AoaAttendsList" id="myResultMap2" extends="BaseResultMap">
+  	<association property="status" resultMap="com.mox.mapper.system.AoaStatusListMapper.BaseResultMap"></association>
+  	<association property="type" resultMap="com.mox.mapper.system.AoaTypeListMapper.BaseResultMap"></association>
+  </resultMap>
+
+  <select id="selectAllMyattends"  parameterType="int" resultMap="myResultMap2">
+		select * from aoa_attends_list a,aoa_user u,aoa_status_list s,aoa_type_list t
+		where a.attends_user_id=u.user_id
+		and a.status_id=s.status_id
+		and a.type_id=t.type_id
+		and a.attends_user_id=#{attends_user_id}
+  </select>
+  	
+	<select id="myselect" parameterType="String" resultMap="myResultMap">
+		select a.attends_id,a.attends_ip,a.attends_remark,a.attends_time,a.status_id,a.type_id,a.attend_hmtime,
+		b.user_name from aoa_attends_list a INNER JOIN aoa_user b where a.attends_user_id=b.user_id
+		and b.user_name like concat('%',#{name},'%') 
+	</select>
+</mapper>

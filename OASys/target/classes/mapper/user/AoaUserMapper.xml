@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mox.mapper.user.AoaUserMapper">
+  <resultMap id="BaseResultMap" type="com.mox.entity.user.AoaUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="bank" jdbcType="VARCHAR" property="bank" />
+    <result column="birth" jdbcType="TIMESTAMP" property="birth" />
+    <result column="eamil" jdbcType="VARCHAR" property="eamil" />
+    <result column="father_id" jdbcType="BIGINT" property="fatherId" />
+    <result column="hire_time" jdbcType="TIMESTAMP" property="hireTime" />
+    <result column="user_idcard" jdbcType="VARCHAR" property="userIdcard" />
+    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+    <result column="is_lock" jdbcType="INTEGER" property="isLock" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_user_id" jdbcType="BIGINT" property="modifyUserId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="salary" jdbcType="REAL" property="salary" />
+    <result column="user_school" jdbcType="VARCHAR" property="userSchool" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="theme_skin" jdbcType="VARCHAR" property="themeSkin" />
+    <result column="user_edu" jdbcType="VARCHAR" property="userEdu" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_sign" jdbcType="VARCHAR" property="userSign" />
+    <result column="user_tel" jdbcType="VARCHAR" property="userTel" />
+    <result column="dept_id" jdbcType="BIGINT" property="deptId" />
+    <result column="position_id" jdbcType="BIGINT" property="positionId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="superman" jdbcType="INTEGER" property="superman" />
+    <result column="holiday" jdbcType="INTEGER" property="holiday" />
+    <result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+  </resultMap>
+  
+  <!-- 配置用户跟角色的多对一关系 -->
+  <resultMap type="AoaUser" id="UserAndRoleMap" extends="BaseResultMap">
+  	<association property="aoarole" resultMap="com.mox.mapper.role.AoaRoleMapper.RoleAndRolePowerMap"></association>
+  	<association property="dept" resultMap="com.mox.mapper.user.AoaDeptMapper.BaseResultMap"></association>
+  	<association property="position" resultMap="com.mox.mapper.user.AoaPositionMapper.BaseResultMap"></association>
+  </resultMap>
+  <select id="queryOne" parameterType="AoaUser" resultMap="UserAndRoleMap">
+  	select * from aoa_user u,aoa_role_ r,aoa_role_power_list p,aoa_sys_menu m,aoa_position p2,aoa_dept d 
+  	where u.position_id=p2.position_id 
+  	and u.dept_id=d.dept_id
+  	and u.role_id=r.role_id 
+  	and r.role_id=p.role_id 
+  	and p.menu_id=m.menu_id 
+  	and user_name=#{userName} 
+  	and password=#{password}
+  </select>
+  
+  <!-- 自定义的resultmap -->
+  <resultMap id="myResultMap" extends="BaseResultMap" type="com.mox.entity.user.AoaUser">
+  	<result  column="name" jdbcType="VARCHAR" property="name" />
+  	<result  column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+  </resultMap>
+  <resultMap id="myResultMap1" extends="myResultMap" type="com.mox.entity.user.AoaUser">
+  	<result  column="positionName" jdbcType="VARCHAR" property="positionName"/>
+  </resultMap>
+  
+  <!-- 自定义查询 -->
+  <select id="queryBydeptId" parameterType="int" resultMap="myResultMap">
+  	select  u.user_id,u.real_name,u.user_name,u.dept_id,u.position_id,p.`name`,d.dept_name from aoa_user u,aoa_position p,aoa_dept d
+	where u.position_id=p.position_id and u.dept_id=d.dept_id and d.dept_id=#{id}
+  </select>
+  <!-- 自定义查询 -->
+  <select id="queryBydeptId1" parameterType="int" resultMap="myResultMap">
+  	select u.*,p.`name`,d.dept_name from aoa_user u,aoa_position p,aoa_dept d
+	where u.position_id=p.position_id and u.dept_id=d.dept_id and d.dept_id=#{id} LIMIT 0,1
+  </select>
+  
+  <!-- 自定义查询 -->
+  <select id="queryAll"  parameterType="String" resultMap="myResultMap">
+  	SELECT a.user_id,b.dept_name,a.user_name,a.real_name,c.`name`,a.user_tel,a.salary,a.img_path
+	FROM `aoa_user` a  INNER JOIN aoa_dept b ON a.dept_id=b.dept_id INNER JOIN aoa_position c on a.position_id =c.position_id
+	where a.user_name like concat('%',#{name},'%') 
+  </select>
+  
+  <!-- 自定义查询 -->
+  <select id="queryByUserId"  resultMap="myResultMap1" parameterType="int">
+  	SELECT a.*,b.dept_name,c.`name`,d.`name` as positionName
+	FROM `aoa_user` a  INNER JOIN aoa_dept b ON a.dept_id=b.dept_id INNER JOIN aoa_position c on a.position_id =c.position_id inner JOIN aoa_position d on a.position_id=d.position_id
+	where a.user_id=#{id}
+  </select>
+  
+</mapper>

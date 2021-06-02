@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mox.mapper.role.AoaRoleMapper">
+  <resultMap id="BaseResultMap" type="com.mox.entity.role.AoaRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_value" jdbcType="INTEGER" property="roleValue" />
+  </resultMap>
+  
+  <!-- 配置角色跟用户的一对多对关系 -->
+  <resultMap type="AoaRole" id="RoleAndUsersMap" extends="BaseResultMap">
+  	<collection property="aoausers"  resultMap="com.mox.mapper.user.AoaUserMapper.BaseResultMap"></collection>
+  </resultMap>
+  <!-- 配置角色跟中间表的一对多对关系 -->
+  <resultMap type="AoaRole" id="RoleAndRolePowerMap" extends="BaseResultMap">
+  	<collection property="aoarolepowerlists"  resultMap="com.mox.mapper.role.AoaRolePowerListMapper.RolePowerAndMenu"></collection>
+  </resultMap>
+  
+  <select id="selectMemu" parameterType="int" resultMap="RoleAndRolePowerMap">
+  	select * from aoa_role_ r,aoa_role_power_list rp,aoa_sys_menu asm 
+	where r.role_id=rp.role_id
+  	and rp.menu_id=asm.menu_id
+  	and r.role_id=#{menuId} 
+  </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mox.mapper.role.AoaRolePowerListMapper">
+  <resultMap id="BaseResultMap" type="com.mox.entity.role.AoaRolePowerList">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="pk_id" jdbcType="BIGINT" property="pkId" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
+    <result column="menu_id" jdbcType="BIGINT" property="menuId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <!-- 配置中间关系表跟角色表的多对一关系 -->
+  <resultMap type="AoaRolePowerList" id="RolePowerAndRole" extends="BaseResultMap">
+  	<association property="aoarole" resultMap="com.mox.mapper.role.AoaRoleMapper.BaseResultMap"></association>
+  </resultMap>
+   <!-- 配置中间关系表跟菜单表的多对一关系 -->
+  <resultMap type="AoaRolePowerList" id="RolePowerAndMenu" extends="BaseResultMap">
+  	<association property="aoasysmenu" resultMap="com.mox.mapper.system.AoaSysMenuMapper.BaseResultMap"></association>
+  </resultMap>
+</mapper>

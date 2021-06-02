@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mox.mapper.user.AoaPositionMapper">
+  <resultMap id="BaseResultMap" type="com.mox.entity.user.AoaPosition">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="position_id" jdbcType="BIGINT" property="positionId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="describtion" jdbcType="VARCHAR" property="describtion" />
+    <result column="deptid" jdbcType="BIGINT" property="deptid" />
+  </resultMap>
+</mapper>

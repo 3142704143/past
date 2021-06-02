@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mox.mapper.system.AoaSysMenuMapper">
+  <resultMap id="BaseResultMap" type="com.mox.entity.system.AoaSysMenu">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
+    <result column="menu_grade" jdbcType="INTEGER" property="menuGrade" />
+    <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="sort_id" jdbcType="INTEGER" property="sortId" />
+  </resultMap>
+  <!-- 配置菜单表跟中间关系表的一对多关系 -->
+  <resultMap type="AoaSysMenu" id="MuneAndRolePower" extends="BaseResultMap">
+  	<collection property="aoarolepowerlists" resultMap="com.mox.mapper.role.AoaRolePowerListMapper.BaseResultMap"></collection>
+  </resultMap>
+  
+  <select id="myselect" resultMap="BaseResultMap" parameterType="int">
+  	select * from aoa_sys_menu asm where asm.menu_id in 
+  	(select arp.menu_id from aoa_role_power_list arp where role_id=#{menuId})
+  </select>
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		
+	<!-- 开启注解 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 配置注解扫描包 -->
+	<context:component-scan base-package="com.mox.**"></context:component-scan>
+	<context:component-scan base-package="com.mox.**.**"></context:component-scan>
+	<!-- 静态资源放行 -->
+	<mvc:resources location="/" mapping="/**"></mvc:resources>
+	<!-- 属性文件引入 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<!-- 文件上传处理器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置允许上传的文件大小,单位字节 -->
+		<property name="maxUploadSize" value="500000"></property>
+		<!-- 错误的延时处理,请求不会直接报错,而是会继续进入到FileController中,但上传的文件不会调用了,而是去调@ExceptionHandler注解修饰的方法,从而对异常进行处理 -->
+		<property name="resolveLazily" value="true"></property>
+	</bean>
+	
+	<!-- 配置链接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${name}"></property>
+		<property name="password" value="${pwd}"></property>
+	</bean>
+	<!-- 配置SqlSessionFactory -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 指定实体映射文件位置 -->
+		<property name="mapperLocations" value="classpath:mapper/*/*.xml"></property>
+		<!-- 指定实体类得包名，框架自动映射实体类型得别名，别名就是类名 -->
+		<property name="typeAliasesPackage" value="com.mox.entity"/>
+		<!-- 配置分页插件 -->
+		<property name="plugins">
+			<list>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<!-- 通过属性指定开始mapper接口参数分页 -->
+					<property name="properties">
+						<props>
+							<prop key="supportMethodsArguments">true</prop>
+						</props>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置Mapper接口的扫描：使用了tkmapper框架的写法 -->
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定dao层接口的包名 -->
+		<property name="basePackage" value="com.mox.mapper.*"></property>
+		<!-- 设置tkmapper的安全删除修改属性 -->
+		<property name="properties">
+			<props>
+				<prop key="safeDelete"></prop>
+				<prop key="safeUpdate"></prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置事物管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 配置注解式事物 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
